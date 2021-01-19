@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
 import { Route, Redirect } from "react-router-dom";
 
 export const Public = ({ component: Component, ...rest }) => {
-  const isLogged = false;
+  const { token } = useSelector((state) => state.auth);
+
+  const isLogged = token;
   return (
     <Route
       {...rest}
